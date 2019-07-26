@@ -2,23 +2,20 @@ import turtle
 import tkinter
 
 
-class langtons():
-
-    def __init__(self, ants=[], speed=0, duration='inf', filename=""):
+class langtons:
+    def __init__(self, id=1, ants=[], speed=0, duration="inf", filename=""):
         self.ants = ants
         self.maps = {}
         self.speed = speed
         self.duration = duration
         self.saveto = filename
+        self.id = id
 
-    def reset(self):
-        for ant in self.ants:
-            ant.clearstamps()
-            self.ants.remove(ant)
+    # def reset(self):
 
     def addAnt(self, xcor, ycor):
         ant = turtle.Turtle()
-        ant.shape('square')
+        ant.shape("square")
         ant.shapesize(0.5)
         ant.speed(self.speed)
         ant.setpos(xcor, ycor)
@@ -30,12 +27,12 @@ class langtons():
     def main(self):
 
         window = turtle.Screen()
-        window.bgcolor('white')
+        window.bgcolor("white")
         window.screensize(1000, 1000)
 
         flag = True
 
-        if self.duration == 'inf':
+        if self.duration == "inf":
             while True:
                 if self.saveto != "":
                     ts = turtle.getscreen()
@@ -82,6 +79,13 @@ class langtons():
 
                     ant.forward(steps)
                 self.duration -= 1
+
+        for t in self.ants:
+            t.reset()
+        for t in window.turtles():
+            t.reset()
+        self.ants = []
+        self.maps = {}
 
         turtle.clearscreen()
 
