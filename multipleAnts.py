@@ -10,6 +10,7 @@ class langtons:
         self.duration = duration
         self.saveto = filename
         self.id = id
+        self.window = None
 
     # def reset(self):
 
@@ -26,9 +27,9 @@ class langtons:
 
     def main(self):
 
-        window = turtle.Screen()
-        window.bgcolor("white")
-        window.screensize(1000, 1000)
+        self.window = turtle.Screen()
+        self.window.bgcolor("white")
+        self.window.screensize(1000, 1000)
 
         flag = True
 
@@ -82,12 +83,11 @@ class langtons:
 
         for t in self.ants:
             t.reset()
-        for t in window.turtles():
+        for t in self.window.turtles():
             t.reset()
         self.ants = []
         self.maps = {}
-
-        turtle.clearscreen()
+        self.window.clear()
 
 
 def invert(graph, ant, color):
