@@ -5,6 +5,7 @@ import tkinter
 class langtons:
     def __init__(self, id=1, ants=[], speed=0, duration="inf", filename=""):
         self.ants = ants
+        self.turtle = turtle
         self.maps = {}
         self.speed = speed
         self.duration = duration
@@ -12,10 +13,12 @@ class langtons:
         self.id = id
         self.window = None
 
-    # def reset(self):
+    def reset(self):
+        for ant in self.ants:
+            ant.reset()
 
     def addAnt(self, xcor, ycor):
-        ant = turtle.Turtle()
+        ant = self.turtle.Turtle()
         ant.shape("square")
         ant.shapesize(0.5)
         ant.speed(self.speed)
@@ -27,7 +30,7 @@ class langtons:
 
     def main(self):
 
-        self.window = turtle.Screen()
+        self.window = self.turtle.Screen()
         self.window.bgcolor("white")
         self.window.screensize(1000, 1000)
 
@@ -36,7 +39,7 @@ class langtons:
         if self.duration == "inf":
             while True:
                 if self.saveto != "":
-                    ts = turtle.getscreen()
+                    ts = self.turtle.getscreen()
                     ts.getcanvas().postscript(file=self.saveto)
 
                 steps = 10
@@ -59,7 +62,7 @@ class langtons:
         else:
             while self.duration > 0:
                 if self.saveto != "":
-                    ts = turtle.getscreen()
+                    ts = self.turtle.getscreen()
                     ts.getcanvas().postscript(file=self.saveto)
 
                 steps = 10
@@ -88,6 +91,7 @@ class langtons:
         self.ants = []
         self.maps = {}
         self.window.clear()
+        # self.window.bye()
 
 
 def invert(graph, ant, color):
@@ -102,5 +106,5 @@ def coordinate(ant):
         return None
 
 
-if __name__ == "__main__":
-    langtons()
+# if __name__ == "__main__":
+#     langtons()
