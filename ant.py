@@ -1,6 +1,8 @@
 import turtle
 
+
 class Ant:
+
     """
     instantiate a turtle.Turtle() as a single ant
     ant should contain all logic for an ant
@@ -8,6 +10,7 @@ class Ant:
     ant should be able to be instantiated and manipulated
     from the screen class
     """
+
     def __init__(self, shape="square", shapesize=0.5, speed=1000000, pos=(0,0), steps=10):
         self.ant = turtle.Turtle()
         self.set_ant_attributes(shape, shapesize, speed, pos)
