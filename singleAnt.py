@@ -14,7 +14,7 @@ def langton():
     ant.shape('square')
     ant.shapesize(0.5)
     ant.speed(1000000)
-
+    ant.setpos(1, 5)
     pos = coordinate(ant)
 
     while True:

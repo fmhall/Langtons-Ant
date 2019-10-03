@@ -3,8 +3,11 @@ import tkinter
 
 
 class langtons:
+    window_size = 100
+
     def __init__(self, id=1, ants=[], speed=0, duration="inf", filename=""):
         self.ants = ants
+        # TODO: Fix
         self.turtle = turtle
         self.maps = {}
         self.speed = speed
@@ -18,6 +21,7 @@ class langtons:
             ant.reset()
 
     def addAnt(self, xcor, ycor):
+        # TODO: Fix
         ant = self.turtle.Turtle()
         ant.shape("square")
         ant.shapesize(0.5)
@@ -25,7 +29,7 @@ class langtons:
         ant.setpos(xcor, ycor)
         self.ants.append(ant)
 
-    def listAnts():
+    def listAnts(self):
         print(self.ants)
 
     def main(self):
@@ -43,6 +47,7 @@ class langtons:
                     ts.getcanvas().postscript(file=self.saveto)
 
                 steps = 10
+                # TODO: Check if position of any number of ants is the same and handle that
                 for ant in self.ants:
                     pos = coordinate(ant)
                     if pos not in self.maps or self.maps[pos] == "white":
